@@ -1,5 +1,5 @@
-Exemplo 1
-
+Exemplo 1 
+-- Parte 1 --
 #Git do projeto
 https://github.com/mark-church/docker-pets
 
@@ -9,3 +9,17 @@ $ docker network create -d bridge petsBridge
 $ docker run -d --net petsBridge --name db consul
 #Criamos o frontend
 $ docker run -it --env "DB=db" --net petsBridge --name web -p 8000:5000 chrch/docker-pets:1.0
+
+docker exec -it web sh
+hostname
+exit
+
+-- Parte 2 --
+docker run -d --net host --name db consul
+docker run -it --env "DB=localhost" --net host --name local chrch/docker-pets:1.0
+
+#Ver portas abertas
+netstat 
+
+#Ver os logs
+docker logs [name]
